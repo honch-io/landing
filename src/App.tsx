@@ -1,4 +1,6 @@
 import Navbar from "./components/Navbar"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 function App() {
   return (
@@ -17,8 +19,8 @@ function App() {
 
           <div className="flex flex-row items-center gap-2 mt-10">
             <button className="cursor-pointer hover:bg-primary/80 transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-4 rounded-xl bg-primary text-primary-content">
-              <span>Read the Docs</span>
-              <i className="fa-solid fa-arrow-right"></i>
+              <span>Get notified</span>
+              <FontAwesomeIcon icon={faArrowRight} />
             </button>
             <button className="cursor-pointer transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-4 rounded-xl bg-secondary text-secondary-content hover:bg-secondary/80">
               <span>Talk to us</span>
