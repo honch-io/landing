@@ -7,22 +7,22 @@ function App() {
     <div className="min-h-screen text-copy font-landing max-w-7xl mx-auto">
       <Navbar />
 
-      <section className="flex flex-col md:flex-row px-8 pt-20">
+      <section className="relative flex flex-col md:flex-row px-8 pt-20 overflow-x-clip xl:overflow-x-visible">
         <div className="w-full flex flex-col md:w-1/2 z-50">
           <h1 className="text-6xl font-bold tracking-tight">
             Finally, see how customers use your hardware.
           </h1>
 
           <p className="text-xl mt-8">
-            Product analytics for consumer hardware products. Funnels, cohorts, retention, feature adopton. Built for hardware product managers, not data analysts.
+            Product analytics for consumer hardware products. Funnels, cohorts, retention, and feature adopton for the devices you ship.
           </p>
 
           <div className="flex flex-row items-center gap-2 mt-10">
-            <button className="cursor-pointer hover:bg-primary/80 transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-4 rounded-xl bg-primary text-primary-content">
+            <button className="cursor-pointer hover:bg-primary/80 transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-content">
               <span>Get notified</span>
               <FontAwesomeIcon icon={faArrowRight} />
             </button>
-            <button className="cursor-pointer transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-4 rounded-xl bg-secondary text-secondary-content hover:bg-secondary/80">
+            <button className="cursor-pointer transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-3 rounded-xl bg-secondary text-secondary-content hover:bg-secondary/80">
               <span>Talk to us</span>
             </button>
           </div>
