@@ -19,10 +19,10 @@ export default function Navbar() {
             </div> */}
 
             <div className="flex items-center gap-4 font-medium">
-                <button className="transition-colors hover:text-copy-light duration-300 cursor-pointer">
+                <button className="transition-colors hover:text-copy-light duration-300 cursor-not-allowed">
                     <span>Login</span>
                 </button>
-                <button className="rounded-full py-1 px-4 bg-primary text-primary-content cursor-pointer hover:opacity-80">
+                <button className="cursor-not-allowed rounded-full py-1 px-4 bg-primary text-primary-content hover:bg-primary/80 transition-colors duration-200">
                     <span>Get Started</span>
                 </button>
             </div>
