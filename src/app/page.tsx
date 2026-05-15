@@ -1,9 +1,9 @@
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import LogoBar from "./components/LogoBar"
-import SDKSection from "./components/SDKSection"
-import CTA from "./components/CTA"
-import Footer from "./components/Footer"
+import Navbar from "@/components/Navbar"
+import Hero from "@/components/Hero"
+import LogoBar from "@/components/LogoBar"
+import SDKSection from "@/components/SDKSection"
+import CTA from "@/components/CTA"
+import Footer from "@/components/Footer"
 
 function SectionDivider() {
   return (
@@ -13,7 +13,7 @@ function SectionDivider() {
   )
 }
 
-function App() {
+export default function Page() {
   return (
     <div className="relative mx-auto min-h-screen max-w-7xl border-x">
       <Navbar />
@@ -29,5 +29,3 @@ function App() {
     </div>
   )
 }
-
-export default App

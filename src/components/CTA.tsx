@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import NotifyDialog from "./NotifyDialog"
 
 export default function CTA() {
   return (
@@ -12,9 +13,9 @@ export default function CTA() {
           Stop guessing from returns and support tickets. Know exactly how your hardware gets used in the field.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button size="xl">
+          <NotifyDialog>
             Get early access <ArrowRight />
-          </Button>
+          </NotifyDialog>
           <Button variant="outline" size="xl" render={<a href="https://cal.com/honch/30min" target="_blank" rel="noopener noreferrer" />}>
             Talk to us
           </Button>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import NotifyDialog from "./NotifyDialog"
 
 export default function Hero() {
   return (
@@ -18,9 +19,9 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button size="xl">
-                Get early access <ArrowRight />
-              </Button>
+              <NotifyDialog>
+                Get notified <ArrowRight />
+              </NotifyDialog>
               <Button variant="outline" size="xl" render={<a href="https://cal.com/honch/30min" target="_blank" rel="noopener noreferrer" />}>
                 Talk to us
               </Button>
@@ -36,7 +37,7 @@ export default function Hero() {
             <img
               src="/hero.png"
               alt="Honch dashboard showing device analytics"
-              className="w-full scale-150 ml-20"
+              className="w-full scale-110 lg:scale-150 lg:ml-20"
             />
           </div>
         </div>

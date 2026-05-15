@@ -9,7 +9,7 @@ const logos = [
 
 export default function LogoBar() {
   return (
-    <section className="flex items-center gap-8 overflow-hidden py-12 px-10">
+    <section className="flex flex-col items-center gap-6 overflow-hidden py-12 px-10 md:flex-row md:gap-8">
       <p className="shrink-0 text-sm text-muted-foreground">
         Trusted by the teams building the best hardware.
       </p>
