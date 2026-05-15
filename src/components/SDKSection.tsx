@@ -1,30 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
-
-// Static code lines with manual syntax highlighting
-// Colors: keyword=#569cd6, string=#ce9178, comment=#6a9955, type=#4ec9b0, number=#b5cea8, func=#dcdcaa, plain=#d4d4d4, preprocessor=#c586c0
-const lines: { num: number; tokens: { text: string; color: string }[] }[] = [
-  { num: 1, tokens: [{ text: '#include ', color: '#c586c0' }, { text: '"honch.h"', color: '#ce9178' }] },
-  { num: 2, tokens: [] },
-  { num: 3, tokens: [{ text: 'static ', color: '#569cd6' }, { text: 'honch_config_t', color: '#4ec9b0' }, { text: ' config = {', color: '#d4d4d4' }] },
-  { num: 4, tokens: [{ text: '    .write_key = ', color: '#d4d4d4' }, { text: '"hk_live_xxxxxxxxxxxxx"', color: '#ce9178' }, { text: ',', color: '#d4d4d4' }] },
-  { num: 5, tokens: [{ text: '    .device_id = ', color: '#d4d4d4' }, { text: 'DEVICE_UNIQUE_ID', color: '#4ec9b0' }, { text: ',', color: '#d4d4d4' }] },
-  { num: 6, tokens: [{ text: '    .flush_interval_ms = ', color: '#d4d4d4' }, { text: '5000', color: '#b5cea8' }, { text: ',', color: '#d4d4d4' }] },
-  { num: 7, tokens: [{ text: '};', color: '#d4d4d4' }] },
-  { num: 8, tokens: [] },
-  { num: 9, tokens: [{ text: 'void ', color: '#569cd6' }, { text: 'app_main', color: '#dcdcaa' }, { text: '(', color: '#d4d4d4' }, { text: 'void', color: '#569cd6' }, { text: ') {', color: '#d4d4d4' }] },
-  { num: 10, tokens: [{ text: '    ', color: '' }, { text: 'honch_init', color: '#dcdcaa' }, { text: '(&config);', color: '#d4d4d4' }] },
-  { num: 11, tokens: [] },
-  { num: 12, tokens: [{ text: '    // your code...', color: '#6a9955' }] },
-  { num: 13, tokens: [] },
-  { num: 14, tokens: [{ text: '    ', color: '' }, { text: 'honch_event_t', color: '#4ec9b0' }, { text: ' props = {', color: '#d4d4d4' }] },
-  { num: 15, tokens: [{ text: '        .count = ', color: '#d4d4d4' }, { text: '0', color: '#b5cea8' }, { text: ',', color: '#d4d4d4' }] },
-  { num: 16, tokens: [{ text: '        .duration_ms = ', color: '#d4d4d4' }, { text: '1234', color: '#b5cea8' }, { text: ',', color: '#d4d4d4' }] },
-  { num: 17, tokens: [{ text: '        .mode = ', color: '#d4d4d4' }, { text: '"burst"', color: '#ce9178' }] },
-  { num: 18, tokens: [{ text: '    };', color: '#d4d4d4' }] },
-  { num: 19, tokens: [] },
-  { num: 20, tokens: [{ text: '    ', color: '' }, { text: 'honch_track', color: '#dcdcaa' }, { text: '(', color: '#d4d4d4' }, { text: '"espresso_brewed"', color: '#ce9178' }, { text: ', &props);', color: '#d4d4d4' }] },
-  { num: 21, tokens: [{ text: '}', color: '#d4d4d4' }] },
+const codeLines = [
+  { tokens: [{ text: '#include ', c: '#c586c0' }, { text: '"honch.h"', c: '#ce9178' }] },
+  { tokens: [] },
+  { tokens: [{ text: 'static ', c: '#569cd6' }, { text: 'honch_config_t', c: '#4ec9b0' }, { text: ' cfg = {', c: '#d4d4d4' }] },
+  { tokens: [{ text: '  .write_key = ', c: '#d4d4d4' }, { text: '"hk_live_xxxx"', c: '#ce9178' }, { text: ',', c: '#d4d4d4' }] },
+  { tokens: [{ text: '  .device_id = ', c: '#d4d4d4' }, { text: 'DEVICE_ID', c: '#4ec9b0' }, { text: ',', c: '#d4d4d4' }] },
+  { tokens: [{ text: '};', c: '#d4d4d4' }] },
+  { tokens: [] },
+  { tokens: [{ text: 'void ', c: '#569cd6' }, { text: 'app_main', c: '#dcdcaa' }, { text: '() {', c: '#d4d4d4' }] },
+  { tokens: [{ text: '  ', c: '' }, { text: 'honch_init', c: '#dcdcaa' }, { text: '(&cfg);', c: '#d4d4d4' }] },
+  { tokens: [{ text: '  ', c: '' }, { text: 'honch_track', c: '#dcdcaa' }, { text: '(', c: '#d4d4d4' }, { text: '"button_pressed"', c: '#ce9178' }, { text: ', NULL);', c: '#d4d4d4' }] },
+  { tokens: [{ text: '}', c: '#d4d4d4' }] },
+  { tokens: [] },
+  { tokens: [{ text: '// yes, it\'s really that easy', c: '#6a9955' }] },
 ]
 
 const sdks = [
@@ -38,45 +25,58 @@ const sdks = [
 
 export default function SDKSection() {
   return (
-    <section className="px-8 mt-50">
-      <div className="flex flex-col lg:flex-row gap-16">
-        {/* Left: SDK Code */}
-        <div className="lg:w-[42%] flex-shrink-0">
-          <h2 className="text-3xl font-bold tracking-tight">The SDK in action.</h2>
-          <div className="bg-[#1e1e1e] rounded-xl overflow-hidden mt-6">
-            <pre className="p-4 overflow-x-auto text-[12px] leading-[22px] font-mono">
-              {lines.map((line) => (
-                <div key={line.num} className="flex">
-                  <span className="w-7 flex-shrink-0 text-right pr-2 select-none text-[11px]" style={{ color: '#858585' }}>
-                    {String(line.num).padStart(2, "0")}
-                  </span>
-                  <span>
-                    {line.tokens.length === 0 ? "\n" : line.tokens.map((t, i) => (
-                      <span key={i} style={{ color: t.color || undefined }}>{t.text}</span>
-                    ))}
-                  </span>
-                </div>
-              ))}
-            </pre>
-          </div>
-          <p className="text-base mt-6 text-copy-light">That's the integration. Seriously.</p>
-        </div>
+    <section className="px-6 py-24">
+      <div className="mx-auto mb-12 max-w-2xl text-center">
+        <h2 className="font-heading text-4xl tracking-tight md:text-5xl">
+          Drop-in SDKs for every platform
+        </h2>
+        <p className="mt-4 text-lg text-muted-foreground">
+          A lightweight SDK that lives on your device. Integrate in minutes, ship analytics from day one.
+        </p>
+      </div>
 
-        {/* Right: SDK Support */}
-        <div className="flex-1 min-w-0">
-          <h2 className="text-3xl font-bold tracking-tight">SDK support.</h2>
-          <div className="grid grid-cols-3 gap-3 mt-6">
+      <div className="grid gap-8 lg:grid-cols-2">
+        {/* Code preview */}
+        <pre className="overflow-x-auto bg-[#1e1e1e] p-4 text-[13px] leading-6 font-mono rounded-md">
+            {codeLines.map((line, i) => (
+              <div key={i} className="flex">
+                <span className="w-6 shrink-0 select-none text-right pr-3 text-[11px]" style={{ color: '#858585' }}>
+                  {i + 1}
+                </span>
+                <span>
+                  {line.tokens.length === 0
+                    ? "\n"
+                    : line.tokens.map((t, j) => (
+                        <span key={j} style={{ color: t.c || undefined }}>{t.text}</span>
+                      ))}
+                </span>
+              </div>
+            ))}
+          </pre>
+
+        {/* SDK grid */}
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-3 gap-3">
             {sdks.map((sdk) => (
-              <div key={sdk.name} className="bg-white rounded-lg border border-border p-4 flex flex-col items-center gap-2">
-                <img src={sdk.icon} alt={sdk.name} className="h-10 w-10 object-contain" />
-                <span className="text-sm font-bold text-copy">{sdk.name}</span>
-                <span className="text-xs text-secondary font-medium flex items-center gap-1">
-                  Quickstart <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
+              <div key={sdk.name} className="group relative flex flex-col items-center gap-4 rounded-2xl border bg-card p-6 transition-shadow duration-300">
+                <div className="relative flex size-20 items-center justify-center rounded-xl border bg-background shadow-sm transition-opacity duration-300 group-hover:opacity-0">
+                  <img src={sdk.icon} alt={sdk.name} className="size-10 object-contain" />
+                </div>
+
+                <span className="absolute size-1.5 rounded-full bg-muted-foreground/25 transition-[top,left] duration-300 ease-in-out top-7.5 left-[calc(50%-2.5rem+6px)] group-hover:top-3 group-hover:left-3" />
+                <span className="absolute size-1.5 rounded-full bg-muted-foreground/25 transition-[top,left] duration-300 ease-in-out top-7.5 left-[calc(50%+2.5rem-6px-0.375rem)] group-hover:top-3 group-hover:left-[calc(100%-12px-0.375rem)]" />
+                <span className="absolute size-1.5 rounded-full bg-muted-foreground/25 transition-[top,left] duration-300 ease-in-out top-[calc(1.5rem+5rem-6px-0.375rem)] left-[calc(50%-2.5rem+6px)] group-hover:top-[calc(100%-12px-0.375rem)] group-hover:left-3" />
+                <span className="absolute size-1.5 rounded-full bg-muted-foreground/25 transition-[top,left] duration-300 ease-in-out top-[calc(1.5rem+5rem-6px-0.375rem)] left-[calc(50%+2.5rem-6px-0.375rem)] group-hover:top-[calc(100%-12px-0.375rem)] group-hover:left-[calc(100%-12px-0.375rem)]" />
+
+                <span className="text-sm font-semibold transition-opacity duration-300 group-hover:opacity-0">{sdk.name}</span>
+
+                <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="text-sm font-semibold">{sdk.name}</span>
+                  <span className="text-xs text-muted-foreground">Check out docs →</span>
                 </span>
               </div>
             ))}
           </div>
-          <p className="text-sm text-copy-light mt-4">Coming soon: Rust, embedded Linux, MicroPython.</p>
         </div>
       </div>
     </section>

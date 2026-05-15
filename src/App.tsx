@@ -1,38 +1,31 @@
 import Navbar from "./components/Navbar"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import Hero from "./components/Hero"
+import LogoBar from "./components/LogoBar"
+import SDKSection from "./components/SDKSection"
+import CTA from "./components/CTA"
+import Footer from "./components/Footer"
+
+function SectionDivider() {
+  return (
+    <div style={{ marginLeft: -1, marginRight: -1 }}>
+      <div className="h-px w-full bg-border" />
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="min-h-screen text-copy font-landing max-w-7xl mx-auto">
+    <div className="relative mx-auto min-h-screen max-w-7xl border-x">
       <Navbar />
-
-      <section className="relative flex flex-col md:flex-row px-8 pt-20 overflow-x-clip xl:overflow-x-visible">
-        <div className="w-full flex flex-col md:w-1/2 z-50">
-          <h1 className="text-6xl font-bold tracking-tight">
-            Finally, see how customers use your hardware.
-          </h1>
-
-          <p className="text-xl mt-8">
-            Product analytics for consumer hardware products. Funnels, cohorts, retention, and feature adopton for the devices you ship.
-          </p>
-
-          <div className="flex flex-row items-center gap-2 mt-10">
-            <button className="cursor-pointer hover:bg-primary/80 transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-content">
-              <span>Get notified</span>
-              <FontAwesomeIcon icon={faArrowRight} />
-            </button>
-            <button className="cursor-pointer transition-colors duration-300 text-lg font-medium flex flex-row items-center gap-2 px-6 py-3 rounded-xl bg-secondary text-secondary-content hover:bg-secondary/80">
-              <span>Talk to us</span>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-4 mt-6 text-lg">
-            <span className="text-copy">Already works with your codebase, <span className="marker-underline font-medium">ship same day</span>.</span>
-          </div>
-        </div>
-        <img src="/hero.png" alt="Hero" className="w-full md:w-3/4 absolute -right-30 z-10 overflow-clip" />
-      </section>
+      <Hero />
+      <SectionDivider />
+      <LogoBar />
+      <SectionDivider />
+      <SDKSection />
+      <SectionDivider />
+      <CTA />
+      <SectionDivider />
+      <Footer />
     </div>
   )
 }
