@@ -15,7 +15,7 @@ export default function CTA() {
           <Button size="xl">
             Get early access <ArrowRight />
           </Button>
-          <Button variant="outline" size="xl">
+          <Button variant="outline" size="xl" render={<a href="https://cal.com/honch/30min" target="_blank" rel="noopener noreferrer" />}>
             Talk to us
           </Button>
         </div>
