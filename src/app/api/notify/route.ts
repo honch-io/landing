@@ -1,5 +1,6 @@
 import { neon } from "@neondatabase/serverless"
 import { NextResponse } from "next/server"
+import { getPostHogClient } from "@/lib/posthog-server"
 
 // In-memory rate limit: IP -> { count, resetAt }
 const rateLimit = new Map<string, { count: number; resetAt: number }>()
@@ -23,6 +24,8 @@ function isRateLimited(ip: string): boolean {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export async function POST(request: Request) {
+  const distinctId = request.headers.get("x-posthog-distinct-id")
+
   // Rate limit by IP
   const forwarded = request.headers.get("x-forwarded-for")
   const ip = forwarded?.split(",")[0]?.trim() ?? "unknown"
@@ -69,6 +72,13 @@ export async function POST(request: Request) {
     VALUES (${trimmed})
     ON CONFLICT (email) DO NOTHING
   `
+
+  const posthog = getPostHogClient()
+  posthog.capture({
+    distinctId: distinctId ?? trimmed,
+    event: "waitlist_signup_completed",
+    properties: { email: trimmed },
+  })
 
   return NextResponse.json({ ok: true })
 }

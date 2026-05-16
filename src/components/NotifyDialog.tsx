@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback } from "react"
+import posthog from "posthog-js"
 import { motion, AnimatePresence } from "motion/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -28,7 +29,7 @@ export default function NotifyDialog({ children }: { children: React.ReactNode }
   }, [submitted]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={(open) => { if (open) posthog.capture("notify_dialog_opened") }}>
       <DialogTrigger render={<Button size="xl" />}>
         {children}
       </DialogTrigger>
@@ -60,13 +61,21 @@ export default function NotifyDialog({ children }: { children: React.ReactNode }
                     e.preventDefault()
                     if (!email) return
                     setLoading(true)
+                    const trimmedEmail = email.trim().toLowerCase()
+                    posthog.identify(trimmedEmail, { email: trimmedEmail })
+                    posthog.capture("waitlist_form_submitted", { email: trimmedEmail })
                     try {
                       await fetch("/api/notify", {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" },
+                        headers: {
+                          "Content-Type": "application/json",
+                          "X-POSTHOG-DISTINCT-ID": posthog.get_distinct_id(),
+                        },
                         body: JSON.stringify({ email }),
                       })
                       setSubmitted(true)
+                    } catch (err) {
+                      posthog.captureException(err)
                     } finally {
                       setLoading(false)
                     }
