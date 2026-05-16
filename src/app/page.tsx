@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import LogoBar from "@/components/LogoBar"
+import HowItWorks from "@/components/HowItWorks"
 import SDKSection from "@/components/SDKSection"
 import CTA from "@/components/CTA"
 import Footer from "@/components/Footer"
@@ -20,6 +21,8 @@ export default function Page() {
       <Hero />
       <SectionDivider />
       <LogoBar />
+      <SectionDivider />
+      <HowItWorks />
       <SectionDivider />
       <SDKSection />
       <SectionDivider />

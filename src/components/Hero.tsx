@@ -4,7 +4,7 @@ import NotifyDialog from "./NotifyDialog"
 
 export default function Hero() {
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] px-6 py-6">
+    <section className="flex px-6 py-6">
       <div className="flex flex-1 items-center rounded-3xl bg-card border px-6 md:px-16 overflow-clip">
         <div className="flex flex-col items-start gap-16 py-16 lg:flex-row lg:items-center">
           {/* Left side - Copy */}
