@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import NotifyDialog from "./NotifyDialog"
+import TrackedLink from "./TrackedLink"
 
 export default function Hero() {
   return (
@@ -22,9 +22,9 @@ export default function Hero() {
               <NotifyDialog>
                 Get notified <ArrowRight />
               </NotifyDialog>
-              <Button variant="outline" size="xl" render={<a href="https://cal.com/honch/30min" target="_blank" rel="noopener noreferrer" />}>
+              <TrackedLink href="https://cal.com/honch/30min" event="cta_clicked" properties={{ cta: "talk_to_us", location: "hero" }}>
                 Talk to us
-              </Button>
+              </TrackedLink>
             </div>
 
             <p className="text-sm text-muted-foreground">

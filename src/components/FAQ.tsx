@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import { ChevronDownIcon } from "lucide-react"
 import {
   Collapsible,
@@ -44,7 +45,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="px-6 py-24">
+    <section id="faq" className="px-6 py-24">
       <h2 className="mx-auto max-w-3xl text-center font-heading text-4xl md:text-5xl">
         Frequently asked questions
       </h2>
@@ -59,7 +60,7 @@ export default function FAQ() {
             <FrameDescription>Common questions from hardware teams</FrameDescription>
           </FrameHeader>
           {faqs.map((faq, index) => (
-            <Collapsible key={index}>
+            <Collapsible key={index} onOpenChange={(open) => { if (open) posthog.capture("faq_opened", { question: faq.question }) }}>
               <FramePanel>
                 <CollapsibleTrigger
                   className="flex w-full cursor-pointer items-center justify-between gap-3 text-left data-panel-open:[&_svg]:rotate-180"

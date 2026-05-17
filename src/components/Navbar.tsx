@@ -1,5 +1,16 @@
+"use client"
+
+import posthog from "posthog-js"
 import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+
+const navLinks = [
+  { label: "Product", href: "#product" },
+  { label: "SDKs", href: "#sdks" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Pricing", href: "#pricing" },
+]
 
 export default function Navbar() {
   return (
@@ -9,18 +20,23 @@ export default function Navbar() {
       </a>
 
       <nav className="hidden items-center gap-1 md:flex">
-        {["Product", "SDKs", "Docs", "Pricing"].map((item) => (
-          <Button key={item} variant="ghost" size="sm" className="text-muted-foreground">
-            {item}
-          </Button>
+        {navLinks.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={() => posthog.capture("nav_clicked", { link: item.label.toLowerCase() })}
+            className={buttonVariants({ variant: "ghost", size: "sm", className: "text-muted-foreground" })}
+          >
+            {item.label}
+          </a>
         ))}
       </nav>
 
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
+        <Button variant="ghost" size="sm" className="hidden sm:inline-flex" onClick={() => posthog.capture("cta_clicked", { cta: "log_in", location: "navbar" })}>
           Log in
         </Button>
-        <Button size="sm">
+        <Button size="sm" onClick={() => posthog.capture("cta_clicked", { cta: "get_started", location: "navbar" })}>
           Get started <ArrowRight />
         </Button>
       </div>

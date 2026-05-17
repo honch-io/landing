@@ -3,9 +3,11 @@ import Hero from "@/components/Hero"
 import LogoBar from "@/components/LogoBar"
 import HowItWorks from "@/components/HowItWorks"
 import SDKSection from "@/components/SDKSection"
+import Pricing from "@/components/Pricing"
 import FAQ from "@/components/FAQ"
 import CTA from "@/components/CTA"
 import Footer from "@/components/Footer"
+import TrackedSection from "@/components/TrackedSection"
 
 function SectionDivider() {
   return (
@@ -19,19 +21,37 @@ export default function Page() {
   return (
     <div className="relative mx-auto min-h-screen max-w-7xl border-x">
       <Navbar />
-      <Hero />
+      <TrackedSection name="hero">
+        <Hero />
+      </TrackedSection>
       <SectionDivider />
-      <LogoBar />
+      <TrackedSection name="logo_bar">
+        <LogoBar />
+      </TrackedSection>
       <SectionDivider />
-      <HowItWorks />
+      <TrackedSection name="how_it_works">
+        <HowItWorks />
+      </TrackedSection>
       <SectionDivider />
-      <SDKSection />
+      <TrackedSection name="sdks">
+        <SDKSection />
+      </TrackedSection>
+      {/* <SectionDivider />
+      <TrackedSection name="pricing">
+        <Pricing />
+      </TrackedSection> */}
       <SectionDivider />
-      <FAQ />
+      <TrackedSection name="faq">
+        <FAQ />
+      </TrackedSection>
       <SectionDivider />
-      <CTA />
+      <TrackedSection name="cta">
+        <CTA />
+      </TrackedSection>
       <SectionDivider />
-      <Footer />
+      <TrackedSection name="footer">
+        <Footer />
+      </TrackedSection>
     </div>
   )
 }

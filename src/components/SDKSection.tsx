@@ -25,7 +25,7 @@ const sdks = [
 
 export default function SDKSection() {
   return (
-    <section className="px-6 py-24">
+    <section id="sdks" className="px-6 py-24">
       <div className="mx-auto mb-12 max-w-2xl text-center">
         <h2 className="font-heading text-4xl md:text-5xl">
           Drop-in SDKs for every platform

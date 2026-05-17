@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { Card, CardFrame, CardFrameHeader, CardFrameTitle, CardFrameDescription } from "@/components/ui/card"
 import {
   Table,
@@ -13,10 +12,11 @@ import {
 import { ArrowRight } from "lucide-react"
 import { Coffee, Drop, WifiHigh, Thermometer, Cpu, Watch, DeviceMobile, SpeakerHigh, GameController, CalendarBlank, ArrowsClockwise } from "@phosphor-icons/react"
 import NotifyDialog from "./NotifyDialog"
+import TrackedLink from "./TrackedLink"
 
 export default function HowItWorks() {
   return (
-    <section className="px-6 py-24">
+    <section id="product" className="px-6 py-24">
       <h2 className="mx-auto max-w-3xl text-center font-heading text-4xl md:text-5xl">
         With us, device analytics is easy
       </h2>
@@ -30,9 +30,9 @@ export default function HowItWorks() {
         <NotifyDialog>
           Get started <ArrowRight />
         </NotifyDialog>
-        <Button variant="outline" size="xl" render={<a href="https://cal.com/honch/30min" target="_blank" rel="noopener noreferrer" />}>
+        <TrackedLink href="https://cal.com/honch/30min" event="cta_clicked" properties={{ cta: "book_a_demo", location: "how_it_works" }}>
           Book a demo <CalendarBlank weight="duotone" />
-        </Button>
+        </TrackedLink>
       </div>
 
       <div className="mt-16 grid gap-3 md:grid-cols-3">
