@@ -10,7 +10,7 @@ import TrackedSection from "@/components/TrackedSection"
 
 function SectionDivider() {
   return (
-    <div style={{ marginLeft: -1, marginRight: -1 }}>
+    <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
       <div className="h-px w-full bg-border" />
     </div>
   )
