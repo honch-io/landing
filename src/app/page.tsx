@@ -10,7 +10,7 @@ import TrackedSection from "@/components/TrackedSection"
 
 function SectionDivider() {
   return (
-    <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+    <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen">
       <div className="h-px w-full bg-border" />
     </div>
   )
@@ -40,13 +40,23 @@ export default function Page() {
         <FAQ />
       </TrackedSection>
       <SectionDivider />
-      <TrackedSection name="cta">
-        <CTA />
-      </TrackedSection>
-      <SectionDivider />
-      <TrackedSection name="footer">
-        <Footer />
-      </TrackedSection>
+      <div className="relative overflow-hidden">
+        <img
+          src="/footer-bg.png"
+          alt=""
+          className="absolute bottom-0 left-0 w-full h-auto"
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-background via-background/80 to-transparent" />
+
+        <div className="relative z-10">
+          <TrackedSection name="cta">
+            <CTA />
+          </TrackedSection>
+          <TrackedSection name="footer">
+            <Footer />
+          </TrackedSection>
+        </div>
+      </div>
     </div>
   )
 }
