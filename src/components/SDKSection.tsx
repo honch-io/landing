@@ -58,7 +58,7 @@ export default function SDKSection() {
         <div className="flex flex-col gap-6">
           <div className="grid grid-cols-3 gap-3">
             {sdks.map((sdk) => (
-              <div key={sdk.name} className="group relative flex flex-col items-center gap-4 rounded-2xl border bg-card p-6 transition-shadow duration-300">
+              <a href="https://docs.honch.io/" key={sdk.name} className="group relative flex flex-col items-center gap-4 rounded-2xl border bg-card p-6 transition-shadow duration-300">
                 <div className="relative flex size-20 items-center justify-center rounded-xl border bg-background shadow-sm transition-opacity duration-300 group-hover:opacity-0">
                   <img src={sdk.icon} alt={sdk.name} className="size-10 object-contain" />
                 </div>
@@ -74,7 +74,7 @@ export default function SDKSection() {
                   <span className="text-sm font-semibold">{sdk.name}</span>
                   <span className="text-xs text-muted-foreground">Check out docs →</span>
                 </span>
-              </div>
+              </a>
             ))}
           </div>
         </div>
