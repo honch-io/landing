@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
-import LogoBar from "@/components/LogoBar"
+// import LogoBar from "@/components/LogoBar"
 import HowItWorks from "@/components/HowItWorks"
 import SDKSection from "@/components/SDKSection"
 import FAQ from "@/components/FAQ"
@@ -23,10 +23,10 @@ export default function Page() {
       <TrackedSection name="hero">
         <Hero />
       </TrackedSection>
-      <SectionDivider />
+      {/* <SectionDivider />
       <TrackedSection name="logo_bar">
         <LogoBar />
-      </TrackedSection>
+      </TrackedSection> */}
       <SectionDivider />
       <TrackedSection name="how_it_works">
         <HowItWorks />
