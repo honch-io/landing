@@ -36,7 +36,7 @@ export default function Navbar() {
         <Button variant="ghost" size="sm" className="hidden sm:inline-flex" onClick={() => posthog.capture("cta_clicked", { cta: "log_in", location: "navbar" })}>
           Log in
         </Button>
-        <Button size="sm" onClick={() => posthog.capture("cta_clicked", { cta: "get_started", location: "navbar" })}>
+        <Button size="lg" onClick={() => posthog.capture("cta_clicked", { cta: "get_started", location: "navbar" })}>
           Get started <ArrowRight />
         </Button>
       </div>

@@ -17,13 +17,13 @@ import TrackedLink from "./TrackedLink"
 export default function HowItWorks() {
   return (
     <section id="product" className="px-6 py-24">
-      <h2 className="mx-auto max-w-3xl text-center font-heading text-4xl md:text-5xl">
-        With us, device analytics is easy
+      <h2 className="mx-auto text-center font-heading text-4xl md:text-5xl md:whitespace-nowrap">
+        Three steps from device to dashboard
       </h2>
 
       <p className="mx-auto mt-4 max-w-xl text-center text-lg text-muted-foreground">
-        Effortless analytics for hardware teams, powerful insights
-        for fast-growing device companies.
+        One lightweight SDK gets you funnels, retention, and live events.
+        No backend, no warehouse, no pipelines to maintain.
       </p>
 
       <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -43,7 +43,7 @@ export default function HowItWorks() {
           </span>
           <h3 className="mt-6 text-xl font-bold">Add the SDK</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            A lightweight SDK that lives on your device. Integrate in minutes, ship analytics from day one.
+            A lightweight SDK that runs on-device. Works with your existing firmware.
           </p>
 
           {/* Orbiting devices visual */}
@@ -104,7 +104,7 @@ export default function HowItWorks() {
           </span>
           <h3 className="mt-6 text-xl font-bold">See every interaction</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Watch how people actually use your product in real time — every feature, every workflow, every edge case.
+            Every button press, mode switch, and setting change. Streamed from the field in real time, across every device you've shipped.
           </p>
 
           {/* Event stream visual — matches platform CardFrame + Table variant="card" */}
@@ -172,7 +172,7 @@ export default function HowItWorks() {
           </span>
           <h3 className="mt-6 text-xl font-bold">Find what matters</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Funnels, retention, and cohorts that show where users drop off and what drives them to come back.
+            Funnels, retention, and cohorts that show where users drop off, what keeps them coming back, and what to build next.
           </p>
 
           {/* Funnel visual */}
@@ -190,11 +190,11 @@ export default function HowItWorks() {
                 { pct: "42.1%", h: 42.1, label: "5th brew", users: "5,221" },
                 { pct: "18.7%", h: 18.7, label: "Daily habit", users: "2,382" },
               ].map((s) => (
-                <div key={s.label} className="flex flex-1 flex-col items-center gap-1">
+                <div key={s.label} className="group/bar flex flex-1 flex-col items-center gap-1">
                   <span className="text-[10px] font-semibold tabular-nums">{s.pct}</span>
                   <div className="w-full flex items-end" style={{ height: 80 }}>
                     <div
-                      className="w-full rounded-t bg-blue-500"
+                      className="w-full rounded-t bg-blue-500 transition-colors duration-300 ease-out group-hover/bar:bg-primary"
                       style={{ height: `${s.h}%` }}
                     />
                   </div>

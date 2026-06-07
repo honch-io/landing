@@ -1,20 +1,15 @@
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 // import LogoBar from "@/components/LogoBar"
+import FeatureTabs from "@/components/feature-tabs/FeatureTabs"
 import HowItWorks from "@/components/HowItWorks"
 import SDKSection from "@/components/SDKSection"
 import FAQ from "@/components/FAQ"
 import CTA from "@/components/CTA"
 import Footer from "@/components/Footer"
 import TrackedSection from "@/components/TrackedSection"
-
-function SectionDivider() {
-  return (
-    <div className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen">
-      <div className="h-px w-full bg-border" />
-    </div>
-  )
-}
+import SectionDivider from "@/components/SectionDivider"
+import Walkthrough from "@/components/walkthrough/Walkthrough"
 
 export default function Page() {
   return (
@@ -28,12 +23,20 @@ export default function Page() {
         <LogoBar />
       </TrackedSection> */}
       <SectionDivider />
+      <TrackedSection name="features">
+        <FeatureTabs />
+      </TrackedSection>
+      <SectionDivider />
       <TrackedSection name="how_it_works">
         <HowItWorks />
       </TrackedSection>
       <SectionDivider />
       <TrackedSection name="sdks">
         <SDKSection />
+      </TrackedSection>
+      <SectionDivider />
+      <TrackedSection name="walkthrough">
+        <Walkthrough />
       </TrackedSection>
       <SectionDivider />
       <TrackedSection name="faq">

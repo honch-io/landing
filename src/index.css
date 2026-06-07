@@ -125,6 +125,7 @@
   }
 }
 
+
 :root {
   --destructive-foreground: var(--color-red-700);
   --info: var(--color-blue-500);

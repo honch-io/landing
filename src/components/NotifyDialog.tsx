@@ -15,7 +15,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 
-export default function NotifyDialog({ children }: { children: React.ReactNode }) {
+export default function NotifyDialog({ children, className }: { children: React.ReactNode; className?: string }) {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -30,7 +30,7 @@ export default function NotifyDialog({ children }: { children: React.ReactNode }
 
   return (
     <Dialog onOpenChange={(open) => { if (open) posthog.capture("notify_dialog_opened") }}>
-      <DialogTrigger render={<Button size="xl" />}>
+      <DialogTrigger render={<Button size="xl" className={className} />}>
         {children}
       </DialogTrigger>
       <DialogPopup showCloseButton={!submitted}>
