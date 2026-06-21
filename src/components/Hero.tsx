@@ -1,46 +1,69 @@
+"use client"
+
 import { ArrowRight } from "lucide-react"
-import NotifyDialog from "./NotifyDialog"
+import { CalendarBlank } from "@phosphor-icons/react"
+import { Button } from "@/components/ui/button"
 import TrackedLink from "./TrackedLink"
+import InstallCommand from "./InstallCommand"
 
 export default function Hero() {
   return (
-    <section className="flex px-6 py-6">
-      <div className="flex flex-1 items-center rounded-3xl bg-card border px-6 md:px-16 overflow-clip">
-        <div className="flex flex-col items-start gap-16 py-16 lg:flex-row lg:items-center">
-          {/* Left side - Copy */}
-          <div className="flex max-w-xl flex-col gap-6 lg:w-1/2">
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-[4rem]">
-              Product analytics for the hardware you ship
-            </h1>
+    <section className="flex items-center justify-center mt-20 pb-32">
+      <div className="text-center flex max-w-2xl flex-col gap-6">
+        <h1 className="font-heading text-5xl md:text-6xl lg:text-[4rem] text-white">
+          Product analytics for the{" "}
+          <span className="relative inline-block">
+            hardware
+            <svg
+              aria-hidden
+              viewBox="0 0 300 20"
+              preserveAspectRatio="none"
+              fill="none"
+              className="pointer-events-none absolute -bottom-[0.28em] left-0 h-[0.32em] w-full overflow-visible"
+            >
+              <path
+                d="M4 11 Q150 0 296 12"
+                stroke="currentColor"
+                strokeWidth={4}
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+                pathLength={1}
+                style={{
+                  strokeDasharray: 1,
+                  strokeDashoffset: 1,
+                  animation: "hero-underline 0.4s cubic-bezier(0.33, 1, 0.68, 1) 0.35s forwards",
+                }}
+              />
+            </svg>
+          </span>{" "}
+          you ship
+        </h1>
+        <style>{`@keyframes hero-underline { to { stroke-dashoffset: 0; } }`}</style>
 
-            <p className="text-lg text-muted-foreground md:text-xl">
-              Funnels, retention, cohorts, and feature adoption for consumer hardware products.
-              Built for the way device data actually works.
-            </p>
+        <p className="text-lg text-white/80 md:text-xl">
+          Funnels, retention, cohorts, and feature adoption for the connected
+          products you ship. Made for devices, not browsers.
+        </p>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <NotifyDialog>
-                Get notified <ArrowRight />
-              </NotifyDialog>
-              <TrackedLink href="https://cal.com/honch/30min" event="cta_clicked" properties={{ cta: "talk_to_us", location: "hero" }}>
-                Talk to us
-              </TrackedLink>
-            </div>
-
-            <p className="text-sm text-muted-foreground">
-              Works with your existing firmware. Ship same day.
-            </p>
-          </div>
-
-          {/* Right side - Hero image */}
-          <div className="flex-1 lg:w-1/2">
-            <img
-              src="/hero.png"
-              alt="Honch dashboard showing device analytics"
-              className="w-full scale-110 lg:scale-150 lg:ml-20"
-            />
-          </div>
+        <div className="flex flex-col gap-3 sm:flex-row justify-center">
+          <Button
+            size="xl"
+            className="border-white bg-white text-primary shadow-[0_1px_2px_0_#0000001f,0_4px_10px_-2px_#00000026,inset_0_-1px_0_0_#0000000d] hover:bg-white/90 data-pressed:bg-white/90"
+            render={<a href={"https://app.honch.io/register"} target="_blank" rel="noopener noreferrer" />}
+          >
+            Start for Free <ArrowRight />
+          </Button>
+          <TrackedLink
+            href="https://cal.com/honch/30min"
+            event="cta_clicked"
+            properties={{ cta: "book_a_demo", location: "hero" }}
+            className="border-white/40 bg-transparent text-white shadow-none hover:bg-white/10 data-pressed:bg-white/10"
+          >
+            Book a demo <CalendarBlank weight="duotone" />
+          </TrackedLink>
         </div>
+
+        <InstallCommand />
       </div>
     </section>
   )

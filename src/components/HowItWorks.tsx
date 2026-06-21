@@ -11,25 +11,24 @@ import {
 } from "@/components/ui/table"
 import { ArrowRight } from "lucide-react"
 import { Coffee, Drop, WifiHigh, Thermometer, Cpu, Watch, DeviceMobile, SpeakerHigh, GameController, CalendarBlank, ArrowsClockwise } from "@phosphor-icons/react"
-import NotifyDialog from "./NotifyDialog"
 import TrackedLink from "./TrackedLink"
 
 export default function HowItWorks() {
   return (
     <section id="product" className="px-6 py-24">
       <h2 className="mx-auto max-w-3xl text-center font-heading text-4xl md:text-5xl">
-        With us, device analytics is easy
+        Device analytics made simple
       </h2>
 
       <p className="mx-auto mt-4 max-w-xl text-center text-lg text-muted-foreground">
-        Effortless analytics for hardware teams, powerful insights
-        for fast-growing device companies.
+        Get real product insights from your hardware without building
+        a data pipeline.
       </p>
 
       <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <NotifyDialog>
+        <TrackedLink href="https://app.honch.io/register" event="cta_clicked" properties={{ cta: "get_started", location: "how_it_works" }} variant="default">
           Get started <ArrowRight />
-        </NotifyDialog>
+        </TrackedLink>
         <TrackedLink href="https://cal.com/honch/30min" event="cta_clicked" properties={{ cta: "book_a_demo", location: "how_it_works" }}>
           Book a demo <CalendarBlank weight="duotone" />
         </TrackedLink>
@@ -104,7 +103,7 @@ export default function HowItWorks() {
           </span>
           <h3 className="mt-6 text-xl font-bold">See every interaction</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Watch how people actually use your product in real time — every feature, every workflow, every edge case.
+            See how people use your product in real time, from everyday features to rare edge cases.
           </p>
 
           {/* Event stream visual — matches platform CardFrame + Table variant="card" */}

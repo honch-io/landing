@@ -1,3 +1,5 @@
+import SetupCommand from "./SetupCommand"
+
 const codeLines = [
   { tokens: [{ text: '#include ', c: '#c586c0' }, { text: '"honch.h"', c: '#ce9178' }] },
   { tokens: [] },
@@ -77,6 +79,29 @@ export default function SDKSection() {
               </a>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Install with AI */}
+      <div className="mt-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h3 className="font-heading text-4xl md:text-5xl">Install with AI in minutes</h3>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Run the setup wizard and let AI wire the SDK into your firmware. No boilerplate, no guesswork.
+          </p>
+        </div>
+        <div className="mt-8 flex justify-center">
+          <SetupCommand />
+        </div>
+        <div className="mt-12 overflow-hidden rounded-2xl border bg-card shadow-sm">
+          <video
+            src="/honch-start.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="block w-full"
+          />
         </div>
       </div>
     </section>
