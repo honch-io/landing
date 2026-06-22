@@ -49,6 +49,11 @@ const socials = [
   },
 ]
 
+// One wave-tooth tile (matches the #footer-wave pattern) used to mask the grain
+// overlay to the orange teeth only, so the black gaps keep just the z-0 grain.
+const WAVE_MASK =
+  "url(\"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='36'%20height='20'%3E%3Cpath%20d='M0%200%20H36%20V10%20Q27%204%2018%2010%20Q9%2016%200%2010%20Z'%20fill='white'/%3E%3C/svg%3E\")"
+
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   const external = href.startsWith("http")
   return (
@@ -72,15 +77,33 @@ export default function Footer() {
         style={{ backgroundImage: "url(/noise-light.png)" }}
       />
 
-      {/* Wave transition: orange CTA banner above into the black footer */}
-      <svg aria-hidden className="relative z-10 block h-5 w-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="footer-wave" width="36" height="20" patternUnits="userSpaceOnUse">
-            <path d="M0 0 H36 V10 Q27 4 18 10 Q9 16 0 10 Z" style={{ fill: "var(--primary)" }} />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#footer-wave)" />
-      </svg>
+      {/* Wave transition: orange CTA banner above into the black footer.
+          The orange teeth carry the same overlay grain as the CTA banner so the
+          texture is continuous. The grain is masked to the teeth shape so it never
+          double-grains the black gaps (which already get the z-0 grain above). */}
+      <div className="relative z-10">
+        <svg aria-hidden className="block h-5 w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="footer-wave" width="36" height="20" patternUnits="userSpaceOnUse">
+              <path d="M0 0 H36 V10 Q27 4 18 10 Q9 16 0 10 Z" style={{ fill: "var(--primary)" }} />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#footer-wave)" />
+        </svg>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-repeat mix-blend-overlay"
+          style={{
+            backgroundImage: "url(/noise-light.png)",
+            maskImage: WAVE_MASK,
+            maskSize: "36px 20px",
+            maskRepeat: "repeat",
+            WebkitMaskImage: WAVE_MASK,
+            WebkitMaskSize: "36px 20px",
+            WebkitMaskRepeat: "repeat",
+          }}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-12 px-6 pt-16 pb-12 lg:flex-row lg:gap-16 lg:px-10">
         {/* Left — company / brand block */}
