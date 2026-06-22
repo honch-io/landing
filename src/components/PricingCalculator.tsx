@@ -102,13 +102,17 @@ export function PricingCalculator({
         >
           <SliderPrimitive.Control className="h-full w-full">
             <SliderPrimitive.Track className="relative h-full w-full rounded-xl border border-border bg-background">
-              <SliderPrimitive.Indicator
-                className="w-full rounded-b-xl"
-                style={{
-                  background:
-                    "linear-gradient(to top, color-mix(in srgb, var(--color-primary) 12%, transparent), var(--color-primary))",
-                }}
-              />
+              {/* Gradient fill — clipped to the rounded track (handle is a sibling so it isn't clipped) */}
+              <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
+                <div
+                  className="absolute inset-x-0 bottom-0"
+                  style={{
+                    height: `${(idx / (stopCount - 1)) * 100}%`,
+                    background:
+                      "linear-gradient(to top, color-mix(in srgb, var(--color-primary) 12%, transparent), var(--color-primary))",
+                  }}
+                />
+              </div>
               <SliderPrimitive.Thumb
                 aria-label="Monthly event volume"
                 className="flex h-5 w-10 cursor-grab items-center justify-center gap-[3px] rounded-md border border-border bg-background shadow-md outline-none transition-[box-shadow,scale] has-focus-visible:ring-[3px] has-focus-visible:ring-ring/24 data-dragging:scale-105 data-dragging:cursor-grabbing data-dragging:shadow-lg"
