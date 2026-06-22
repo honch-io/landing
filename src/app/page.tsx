@@ -40,15 +40,19 @@ export default function Page() {
           <TrackedSection name="how_it_works">
             <HowItWorks />
           </TrackedSection>
+
           <TrackedSection name="sdks">
             <SDKSection />
           </TrackedSection>
+
           <TrackedSection name="ai">
             <AISection />
           </TrackedSection>
+
           <TrackedSection name="comparison">
             <ComparisonSection />
           </TrackedSection>
+
           <TrackedSection name="pricing">
             <PricingSection />
           </TrackedSection>

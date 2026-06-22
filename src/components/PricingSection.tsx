@@ -1,8 +1,6 @@
 "use client"
 
 import posthog from "posthog-js"
-import { ChevronRight } from "lucide-react"
-import { buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { PricingCalculator } from "./PricingCalculator"
 
@@ -16,26 +14,26 @@ export default function PricingSection() {
           <div className="mt-5 max-w-md space-y-4 text-base text-muted-foreground">
             <p>Honch is built so pricing is the last thing you have to think about.</p>
             <p>
-              Everything is pay-per-use:{" "}
-              <span className="font-medium text-foreground">$30 per million events</span>,
-              with a free tier that covers small fleets and early prototypes. Plenty of
-              teams run free for a long time.
+              Everything is pay-per-event, and the rate drops the more you send. Your first{" "}
+              <span className="font-medium text-foreground">1,000 events every month are free</span>.
             </p>
             <p>
-              The price only drops as you scale, so you always know what you&rsquo;ll
-              pay. Drag the slider to estimate yours.
+              You only pay for what you use, so you always know what you&rsquo;ll pay. Drag
+              the slider to estimate yours.
             </p>
-          </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="https://cal.com/honch/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => posthog.capture("cta_clicked", { cta: "talk_to_sales", location: "pricing_header" })}
-              className={buttonVariants({ size: "lg" })}
-            >
-              Talk to sales <ChevronRight />
-            </a>
+            <p>
+              Sending more than 250M events a month?{" "}
+              <a
+                href="https://cal.com/honch/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => posthog.capture("cta_clicked", { cta: "talk_to_sales", location: "pricing" })}
+                className="font-medium text-primary hover:underline"
+              >
+                Talk to sales
+              </a>
+              .
+            </p>
           </div>
         </div>
 

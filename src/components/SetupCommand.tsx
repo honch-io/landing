@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Check, ChevronRight, Copy } from "lucide-react"
 import posthog from "posthog-js"
 import { Frame, FramePanel, FrameFooter } from "@/components/ui/frame"
+import InstallGuideDialog from "./InstallGuideDialog"
 
 const COMMAND = "npx @honch/start"
 
@@ -39,15 +40,10 @@ export default function SetupCommand() {
       </FramePanel>
       <FrameFooter className="flex items-center justify-between gap-2 px-4 py-2.5">
         <span className="text-sm text-muted-foreground">Sets up your SDK in one command</span>
-        <a
-          href="https://docs.honch.io/quickstart"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => posthog.capture("nav_clicked", { link: "quickstart", location: "sdk_section" })}
-          className="text-sm font-medium text-primary underline-offset-4 transition-colors hover:underline"
-        >
-          Quickstart &rarr;
-        </a>
+        <InstallGuideDialog
+          triggerLabel={<>Quickstart &rarr;</>}
+          triggerClassName="cursor-pointer text-sm font-medium text-primary underline-offset-4 transition-colors hover:underline"
+        />
       </FrameFooter>
     </Frame>
   )

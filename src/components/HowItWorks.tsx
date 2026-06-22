@@ -9,9 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { ArrowRight } from "lucide-react"
-import { Coffee, Drop, WifiHigh, Thermometer, Cpu, Watch, DeviceMobile, SpeakerHigh, GameController, CalendarBlank, ArrowsClockwise } from "@phosphor-icons/react"
-import TrackedLink from "./TrackedLink"
+import { Coffee, Drop, WifiHigh, Thermometer, Cpu, Watch, DeviceMobile, SpeakerHigh, GameController, ArrowsClockwise } from "@phosphor-icons/react"
 
 export default function HowItWorks() {
   return (
@@ -24,15 +22,6 @@ export default function HowItWorks() {
         Get real product insights from your hardware without building
         a data pipeline.
       </p>
-
-      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <TrackedLink href="https://app.honch.io/register" event="cta_clicked" properties={{ cta: "get_started", location: "how_it_works" }} variant="default">
-          Get started <ArrowRight />
-        </TrackedLink>
-        <TrackedLink href="https://cal.com/honch/30min" event="cta_clicked" properties={{ cta: "book_a_demo", location: "how_it_works" }}>
-          Book a demo <CalendarBlank weight="duotone" />
-        </TrackedLink>
-      </div>
 
       <div className="mt-16 grid gap-3 md:grid-cols-3">
         {/* Card 01 - Integrate SDK */}
