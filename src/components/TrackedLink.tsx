@@ -8,13 +8,16 @@ interface TrackedLinkProps {
   event: string
   properties?: Record<string, string>
   children: React.ReactNode
+  variant?: React.ComponentProps<typeof Button>["variant"]
+  className?: string
 }
 
-export default function TrackedLink({ href, event, properties, children }: TrackedLinkProps) {
+export default function TrackedLink({ href, event, properties, children, variant = "outline", className }: TrackedLinkProps) {
   return (
     <Button
-      variant="outline"
+      variant={variant}
       size="xl"
+      className={className}
       render={<a href={href} target="_blank" rel="noopener noreferrer" />}
       onClick={() => posthog.capture(event, properties)}
     >
